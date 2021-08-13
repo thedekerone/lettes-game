@@ -31,11 +31,11 @@ and open [localhost:3000](https://localhost:3000)
 
 Initially it will look like this
 
-![initial look](https://github.com/thedekerone/lettes-game/blob/dev/src/assets/firstgame.JPG)
+![initial look](https://github.com/thedekerone/lettes-game/blob/dev/src/assets/game1.JPG)
 
 Select any letter to start typing
 
-![first letter](https://github.com/thedekerone/lettes-game/blob/dev/src/assets/game1.JPG)
+![first letter](https://github.com/thedekerone/lettes-game/blob/dev/src/assets/firstgame.JPG)
 
 Keep pressing adjacent letters until you find a valid word (you can only deselect the last letter you pressed)
 
