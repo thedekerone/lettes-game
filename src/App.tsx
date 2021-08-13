@@ -18,7 +18,7 @@ function App() {
 
   return (
     <div className='App'>
-      <div className='app-container'>
+      <div className={"app-container"}>
         <CellsGrid></CellsGrid>
         <div className='controls'>
           <button onClick={() => dispatch(clear())} className='controls__clear'>

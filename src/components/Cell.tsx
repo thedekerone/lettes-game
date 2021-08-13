@@ -9,9 +9,16 @@ type CellType = {
   isSelected: Boolean;
   canSelect: Boolean;
   id: String;
+  isValid: Boolean;
 };
 
-export const Cell = ({ letter, isSelected, canSelect, id }: CellType) => {
+export const Cell = ({
+  letter,
+  isSelected,
+  canSelect,
+  id,
+  isValid,
+}: CellType) => {
   const lastLetter = useAppSelector(
     (state: RootState) => state.board.word[state.board.word.length - 1]
   );
@@ -29,7 +36,13 @@ export const Cell = ({ letter, isSelected, canSelect, id }: CellType) => {
   return (
     <div
       onClick={handleClick}
-      className={isSelected ? "cell selected" : "cell"}
+      className={
+        isSelected
+          ? isValid
+            ? "cell selected valid"
+            : "cell selected"
+          : "cell"
+      }
     >
       {letter}
     </div>
