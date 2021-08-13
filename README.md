@@ -25,21 +25,21 @@ To start the game, run:
 ```bash
 yarn start
 ```
-and open [localhost:3000](localhost:3000)
+and open [localhost:3000](https://localhost:3000)
 
 ### Play the game
 
 Initially it will look like this
 
-![alt text](http://url/to/img.png)
+![initial look](https://github.com/thedekerone/lettes-game/blob/dev/src/assets/firstgame.JPG)
 
 Select any letter to start typing
 
-![alt text](http://url/to/img.png)
+![first letter](https://github.com/thedekerone/lettes-game/blob/dev/src/assets/game1.JPG)
 
 Keep pressing adjacent letters until you find a valid word (you can only deselect the last letter you pressed)
 
-![alt text](http://url/to/img.png)
+![completed](https://github.com/thedekerone/lettes-game/blob/dev/src/assets/word.JPG)
 
 
 Press the "clear word" button to restart the game
