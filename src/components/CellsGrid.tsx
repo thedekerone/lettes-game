@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import React from "react";
+import { useAppSelector } from "../redux/hooks";
 import { RootState } from "../redux/store";
 import { Cell } from "./Cell";
 

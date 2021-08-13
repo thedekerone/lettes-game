@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import letter from "../../api/letters.json";
 import type { RootState } from "../store";
-import { BoardState, Letter } from "../types";
-import { canSelect, formatStateCanSelect } from "../util";
+import { BoardState } from "../types";
+import { formatStateCanSelect } from "../util";
 
 const initialState: BoardState = {
   word: [],
@@ -32,8 +32,6 @@ export const boardSlice = createSlice({
       state.data = formatStateCanSelect(state.data, state.word);
     },
     deselect: (state, action: PayloadAction<String>) => {
-      const wordSelected = state.data.find((el) => el.id === action.payload);
-
       state.data = state.data.map((el) => {
         return el.id === action.payload
           ? {
