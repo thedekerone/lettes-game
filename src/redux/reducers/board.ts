@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
+import letter from "../../api/letters.json";
 import type { RootState } from "../store";
 
 // Define a type for the slice state
@@ -16,21 +16,10 @@ interface BoardState {
 // Define the initial state using that type
 const initialState: BoardState = {
   word: [],
-  data: [
-    { letter: "a", isSelected: false },
-    { letter: "b", isSelected: false },
-    { letter: "c", isSelected: false },
-    { letter: "d", isSelected: false },
-    { letter: "e", isSelected: false },
-    { letter: "f", isSelected: false },
-    { letter: "g", isSelected: false },
-    { letter: "h", isSelected: false },
-    { letter: "i", isSelected: false },
-    { letter: "j", isSelected: false },
-    { letter: "k", isSelected: false },
-    { letter: "l", isSelected: false },
-    { letter: "m", isSelected: false },
-  ],
+  data: letter.board.map((el) => ({
+    letter: el,
+    isSelected: false,
+  })),
 };
 
 export const boardSlice = createSlice({
@@ -58,6 +47,7 @@ export const boardSlice = createSlice({
         ...el,
         isSelected: false,
       }));
+      state.word = [];
     },
   },
 });

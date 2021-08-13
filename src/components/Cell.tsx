@@ -1,28 +1,28 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch } from "../redux/hooks";
 import { deselect, select } from "../redux/reducers/board";
-import { RootState } from "../redux/store";
 import "./cell.css";
 
 type CellType = {
-  letter: string;
+  letter: String;
+  isSelected: Boolean;
 };
 
-export const Cell = ({ letter }: CellType) => {
-  const isSelected = useSelector(
-    (state: RootState) =>
-      state.board.data.find((el) => el.letter === letter)?.isSelected
-  );
-  const word = useSelector((state: RootState) => state.board.word);
+export const Cell = ({ letter, isSelected }: CellType) => {
+  const dispatch = useAppDispatch();
 
-  console.log(word);
-  const dispatch = useDispatch();
+  const handleClick = () => {
+    if (isSelected) {
+      dispatch(deselect(letter));
+    } else {
+      dispatch(select(letter));
+    }
+  };
+
   return (
     <div
-      onClick={() =>
-        !isSelected ? dispatch(select(letter)) : dispatch(deselect(letter))
-      }
-      className='cell'
+      onClick={handleClick}
+      className={isSelected ? "cell selected" : "cell"}
     >
       {letter}
     </div>
