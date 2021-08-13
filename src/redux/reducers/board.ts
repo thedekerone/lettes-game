@@ -1,51 +1,59 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import letter from "../../api/letters.json";
 import type { RootState } from "../store";
+import { BoardState, Letter } from "../types";
+import { canSelect, formatStateCanSelect } from "../util";
 
-// Define a type for the slice state
-interface Letter {
-  letter: String;
-  isSelected: Boolean;
-}
-
-interface BoardState {
-  word: Array<String>;
-  data: Array<Letter>;
-}
-
-// Define the initial state using that type
 const initialState: BoardState = {
   word: [],
-  data: letter.board.map((el) => ({
+  data: letter.board.map((el, index) => ({
     letter: el,
     isSelected: false,
+    canSelect: false,
+    id: "letter" + index,
   })),
 };
 
 export const boardSlice = createSlice({
   name: "board",
-  // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
     select: (state, action: PayloadAction<String>) => {
+      const wordSelected = state.data.find((el) => el.id === action.payload);
+      if (!wordSelected) return state;
+
       state.data = state.data.map((el) => {
-        return el.letter === action.payload ? { ...el, isSelected: true } : el;
+        return el.id === action.payload ? { ...el, isSelected: true } : el;
       });
 
-      state.word.push(action.payload);
+      state.word.push(wordSelected);
+
+      // Finds the cells that can be selected
+      state.data = formatStateCanSelect(state.data, state.word);
     },
     deselect: (state, action: PayloadAction<String>) => {
+      const wordSelected = state.data.find((el) => el.id === action.payload);
+
       state.data = state.data.map((el) => {
-        return el.letter === action.payload ? { ...el, isSelected: false } : el;
+        return el.id === action.payload
+          ? {
+              ...el,
+              isSelected: false,
+            }
+          : el;
       });
 
-      state.word = state.word.filter((el) => el !== action.payload);
+      state.word = state.word.filter((el) => el.id !== action.payload);
+
+      // Finds the cells that can be selected
+      state.data = formatStateCanSelect(state.data, state.word);
     },
-    // Use the PayloadAction type to declare the contents of `action.payload`
+
     clear: (state) => {
       state.data = state.data.map((el) => ({
         ...el,
         isSelected: false,
+        canSelect: false,
       }));
       state.word = [];
     },
@@ -54,7 +62,6 @@ export const boardSlice = createSlice({
 
 export const { select, deselect, clear } = boardSlice.actions;
 
-// Other code such as selectors can use the imported `RootState` type
 export const getWord = (state: RootState) => state.board.word;
 
 export default boardSlice.reducer;

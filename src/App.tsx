@@ -6,7 +6,9 @@ import { clear } from "./redux/reducers/board";
 import { RootState } from "./redux/store";
 
 function App() {
-  const word = useAppSelector((state: RootState) => state.board.word.join(""));
+  const word = useAppSelector((state: RootState) =>
+    state.board.word.map((el) => el.letter).join("")
+  );
 
   const dispatch = useAppDispatch();
 
