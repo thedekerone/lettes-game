@@ -8,8 +8,12 @@ export const canSelect = (letterIndex: number, lastLetterIndex: number) => {
     letterIndex + 4,
   ];
 
+  const isOnEdge =
+    (letterIndex % 4 === 0 && lastLetterIndex % 4 === 3) ||
+    (letterIndex % 4 === 3 && lastLetterIndex % 4 === 0);
+
   const selectedNeighbors = neighbors.filter((el: number) => {
-    if (el < 0 || el > 15) return false;
+    if (el < 0 || el > 15 || isOnEdge) return false;
     if (neighbors.includes(lastLetterIndex)) {
       return true;
     }

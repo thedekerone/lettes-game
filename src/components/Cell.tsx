@@ -17,7 +17,7 @@ export const Cell = ({ letter, isSelected, canSelect, id }: CellType) => {
   );
 
   const dispatch = useAppDispatch();
-  console.log(lastLetter);
+
   const handleClick = () => {
     if (isSelected) {
       lastLetter.id === id && dispatch(deselect(id));

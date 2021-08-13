@@ -4,13 +4,17 @@ import { CellsGrid } from "./components/CellsGrid";
 import { useAppDispatch, useAppSelector } from "./redux/hooks";
 import { clear } from "./redux/reducers/board";
 import { RootState } from "./redux/store";
+import dictionary from "./api/dictionary.json";
 
 function App() {
   const word = useAppSelector((state: RootState) =>
     state.board.word.map((el) => el.letter).join("")
   );
-
   const dispatch = useAppDispatch();
+
+  const validWords = dictionary.words;
+
+  const isValid = validWords.includes(word.toLowerCase());
 
   return (
     <div className='App'>
@@ -21,7 +25,9 @@ function App() {
             <span className='controls-text'>clear word</span>
             <span className='controls-icon'>X</span>
           </button>
-          <div className='controls__word'>{word}</div>
+          <div className={isValid ? "controls__word valid" : "controls__word"}>
+            {word}
+          </div>
         </div>
       </div>
     </div>
