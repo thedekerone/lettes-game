@@ -37,7 +37,7 @@ Select any letter to start typing
 
 ![first letter](https://github.com/thedekerone/lettes-game/blob/dev/src/assets/firstgame.JPG)
 
-Keep pressing adjacent letters until you find a valid word (you can only deselect the last letter you pressed)
+Keep pressing adjacent letters until you find a valid word (you can only deselect the last letter pressed)
 
 ![completed](https://github.com/thedekerone/lettes-game/blob/dev/src/assets/word.JPG)
 
