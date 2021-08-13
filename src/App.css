@@ -10,6 +10,7 @@
   margin: 4rem auto;
   display: flex;
   justify-content: space-between;
+  padding: 1rem;
 }
 
 .controls {
@@ -30,14 +31,10 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  color: rgb(132, 132, 132);
   justify-content: flex-end;
   width: 12rem;
 }
-
-.controls__clear:hover .controls-text {
-  text-decoration: underline;
-}
-
 .controls__clear .controls-icon {
   cursor: pointer;
   border-radius: 100%;
@@ -53,8 +50,23 @@
   height: 1.5rem;
 }
 
+.controls__clear:hover .controls-text {
+  text-decoration: underline;
+  color: black;
+}
+
+.controls__clear:hover .controls-icon {
+  background-color: rgb(155, 155, 155);
+}
+
 .controls__word {
-  border: 1px solid rgb(179, 179, 179);
-  height: 1.75rem;
-  width: 10rem;
+  border: 1px solid rgb(152, 152, 152);
+  height: 2rem;
+  font-weight: bold;
+  font-size: 1.25rem;
+  color: rgb(12, 171, 12);
+  padding: 0.25rem;
+  letter-spacing: 0.25rem;
+  line-height: 1;
+  min-width: 16rem;
 }
