@@ -1,6 +1,6 @@
 # Letters game challenge
 
-This is a react game built with React, Typescript, Redux.
+This is a game built with React, Typescript and Redux.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
