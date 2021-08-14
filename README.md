@@ -4,7 +4,7 @@ This is a game built with React, Typescript and Redux.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Instalation
+## Installation
 
 Clone this repository using the following command in your terminal:
 
